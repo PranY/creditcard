@@ -20,4 +20,34 @@ stages:
     - train_model.max_depth
     outs:
     - .\models\
+  visualize:
+    cmd: python .\src\visualization\visualize.py .\models\model.joblib .\data\processed\
+    deps:
+      - .\data\processed\
+      - .\models\model.joblib
+      - .\src\visualization\visualize.py
+    outs:
+      - .\reports\figures
 
+metrics:
+  - .\reports\figures\metrics.json
+plots:
+  - ROC:
+      template: simple
+      x: fpr
+      y:
+        .\reports\figures\plots\sklearn\roc\train.json: tpr
+        .\reports\figures\plots\sklearn\roc\test.json: tpr
+  - Confusion-Matrix:
+      template: confusion
+      x: actual
+      y:
+        .\reports\figures\plots\sklearn\cm\train.json: predicted
+        .\reports\figures\plots\sklearn\cm\test.json: predicted
+  - Precision-Recall:
+      template: simple
+      x: recall
+      y:
+        .\reports\figures\prc\train.json: precision
+        .\reports\figures\prc\test.json: precision
+  - .\reports\figures\plots\images\importance.png
