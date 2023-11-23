@@ -1,0 +1,4 @@
+[core]
+    remote = remote
+['remote "remote"']
+    url = ../TEMP

@@ -1,9 +1,11 @@
 stages:
   make_dataset:
-    cmd: make_dataset.seed -o .\data\processed\ python .\src\data\make_dataset.py
-      .\data\raw\creditcard.csv
+    cmd: python .\src\data\make_dataset.py .\data\raw\creditcard.csv
     deps:
     - .\data\raw\creditcard.csv
     - .\src\data\make_dataset.py
     params:
     - make_dataset.test_split
+    - make_dataset.seed
+    outs:
+    - .\data\processed\

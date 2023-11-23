@@ -1,6 +1,7 @@
 # make_dataset.py
 import pathlib
 import yaml
+import sys
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -16,6 +17,7 @@ def split_data(df, test_split, seed):
 
 def save_data(train, test, output_path):
     # Save the split datasets to the specified output path
+    pathlib.Path(output_path).mkdir(parents=True, exist_ok=True)
     train.to_csv(output_path + '/train.csv', index=False)
     test.to_csv(output_path + '/test.csv', index=False)
 
@@ -25,7 +27,9 @@ def main():
     home_dir = curr_dir.parent.parent.parent
     params_file = home_dir.as_posix() + '/params.yaml'
     params = yaml.safe_load(open(params_file))["make_dataset"]
-    data_path = home_dir.as_posix() + '/data/raw/creditcard.csv'
+
+    input_file = sys.argv[1]
+    data_path = home_dir.as_posix() + input_file
     output_path = home_dir.as_posix() + '/data/processed'
     
     data = load_data(data_path)
