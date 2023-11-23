@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 def train_model(train_features, target, n_estimators, max_depth, seed):
     # Train your machine learning model
-    model = RandomForestClassifier()
+    model = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, random_state=seed)
     model.fit(train_features, target)
     return model
 
@@ -27,13 +27,15 @@ def main():
 
     input_file = sys.argv[1]
     data_path = home_dir.as_posix() + input_file
-    output_path = home_dir.as_posix() + '/data/models'
+    output_path = home_dir.as_posix() + '/models'
+    pathlib.Path(output_path).mkdir(parents=True, exist_ok=True)
     
+    TARGET = 'Class'
     train_features = pd.read_csv(data_path + '/train.csv')
-    X = train_features.iloc[:, 1:30]
-    y = train_features.iloc[:, 30:31]
+    X = train_features.drop(TARGET, axis=1)
+    y = train_features[TARGET]
 
-    trained_model = train_model(X, y, params['n_estimators'], params['max_dpeth'], params['seed'])
+    trained_model = train_model(X, y, params['n_estimators'], params['max_depth'], params['seed'])
     save_model(trained_model, output_path)
 
     
