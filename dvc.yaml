@@ -27,7 +27,7 @@ stages:
       - .\models\model.joblib
       - .\src\visualization\visualize.py
     outs:
-      - .\reports\figures
+      - .\reports\figures\
 
 metrics:
   - .\reports\figures\metrics.json
@@ -48,6 +48,6 @@ plots:
       template: simple
       x: recall
       y:
-        .\reports\figures\prc\train.json: precision
-        .\reports\figures\prc\test.json: precision
-  - .\reports\figures\plots\images\importance.png
+        .\reports\figures\plots\sklearn\prc\train.json: precision
+        .\reports\figures\plots\sklearn\prc\test.json: precision
+  - .\reports\figures\importance.png
