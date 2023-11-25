@@ -90,7 +90,7 @@ def main():
     # Load the data.
     input_file = sys.argv[2]
     data_path = home_dir.as_posix() + input_file
-    output_path = home_dir.as_posix() + '/reports/figures'
+    output_path = home_dir.as_posix() + '/dvclive'
     pathlib.Path(output_path).mkdir(parents=True, exist_ok=True)
     
     TARGET = 'Class'
