@@ -63,6 +63,6 @@ stages:
     outs:
     - path: dvclive
       hash: md5
-      md5: ff8e8e8bfd251d735cebc1e7e7b10623.dir
-      size: 18691430
+      md5: 31cf6e399da323a9dfeecef8e4569e26.dir
+      size: 18691416
       nfiles: 8
