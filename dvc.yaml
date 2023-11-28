@@ -30,48 +30,72 @@ stages:
     - dvclive
 
 metrics:
-- dvclive/metrics.json
+- dvclive\metrics.json
+
 plots:
-- dvclive/plots/images
-- dvclive/plots/sklearn/roc/train.json:
-    template: simple
-    x: fpr
-    y: tpr
-    title: Receiver operating characteristic (ROC)
-    x_label: False Positive Rate
-    y_label: True Positive Rate
-- dvclive/plots/sklearn/prc/train.json:
-    template: simple
-    x: recall
-    y: precision
-    title: Precision-Recall Curve
-    x_label: Recall
-    y_label: Precision
-- dvclive/plots/sklearn/cm/train.json:
-    template: confusion
-    x: actual
-    y: predicted
-    title: Confusion Matrix
-    x_label: True Label
-    y_label: Predicted Label
-- dvclive/plots/sklearn/roc/test.json:
-    template: simple
-    x: fpr
-    y: tpr
-    title: Receiver operating characteristic (ROC)
-    x_label: False Positive Rate
-    y_label: True Positive Rate
-- dvclive/plots/sklearn/prc/test.json:
-    template: simple
-    x: recall
-    y: precision
-    title: Precision-Recall Curve
-    x_label: Recall
-    y_label: Precision
-- dvclive/plots/sklearn/cm/test.json:
-    template: confusion
-    x: actual
-    y: predicted
-    title: Confusion Matrix
-    x_label: True Label
-    y_label: Predicted Label
+# - dvclive\plots\images\importance.png
+# - dvclive\plots\sklearn\roc\train.json:
+#     template: simple
+#     x: fpr
+#     y: tpr
+#     title: Receiver operating characteristic (ROC)
+#     x_label: False Positive Rate
+#     y_label: True Positive Rate
+# - dvclive\plots\sklearn\prc\train.json:
+#     template: simple
+#     x: recall
+#     y: precision
+#     title: Precision-Recall Curve
+#     x_label: Recall
+#     y_label: Precision
+# - dvclive\plots\sklearn\cm\train.json:
+#     template: confusion
+#     x: actual
+#     y: predicted
+#     title: Confusion Matrix
+#     x_label: True Label
+#     y_label: Predicted Label
+# - dvclive\plots\sklearn\roc\test.json:
+#     template: simple
+#     x: fpr
+#     y: tpr
+#     title: Receiver operating characteristic (ROC)
+#     x_label: False Positive Rate
+#     y_label: True Positive Rate
+# - dvclive\plots\sklearn\prc\test.json:
+#     template: simple
+#     x: recall
+#     y: precision
+#     title: Precision-Recall Curve
+#     x_label: Recall
+#     y_label: Precision
+# - dvclive\plots\sklearn\cm\test.json:
+#     template: confusion
+#     x: actual
+#     y: predicted
+#     title: Confusion Matrix
+#     x_label: True Label
+#     y_label: Predicted Label
+  - ROC:
+      template: simple
+      x: fpr
+      y:
+        dvclive\plots\sklearn\roc\train.json: tpr
+        dvclive\plots\sklearn\roc\test.json: tpr
+  - Confusion-Matrix:
+      template: confusion
+      x: actual
+      y:
+        dvclive\plots\sklearn\cm\train.json: predicted
+        dvclive\plots\sklearn\cm\test.json: predicted
+  - Precision-Recall:
+      template: simple
+      x: recall
+      y:
+        dvclive\plots\sklearn\prc\train.json: precision
+        dvclive\plots\sklearn\prc\test.json: precision
+
+
+
+
+
