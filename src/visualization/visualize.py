@@ -2,7 +2,7 @@ import pathlib
 import joblib
 import sys
 import yaml
-
+import mlflow
 import pandas as pd
 from sklearn import metrics
 from sklearn import tree
@@ -33,7 +33,8 @@ def evaluate(model, X, y, split, live, save_path):
         live.summary = {"avg_prec": {}, "roc_auc": {}}
     live.summary["avg_prec"][split] = avg_prec
     live.summary["roc_auc"][split] = roc_auc
-
+    mlflow.log_metric(key="avg_prec", value=avg_prec)
+    mlflow.log_metric(key="roc_auc", value=roc_auc)
     # ... and plots...
     # ... like an roc plot...
     live.log_sklearn_plot("roc", y, predictions, name=f"roc/{split}")
