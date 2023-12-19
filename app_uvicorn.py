@@ -2,7 +2,6 @@
 from fastapi import FastAPI
 from joblib import load
 from pydantic import BaseModel
-import numpy as np
 
 app = FastAPI()
 
@@ -88,5 +87,4 @@ def predict(input_data: PredictionInput):
 
 if __name__ == "__main__":
     import uvicorn
-
     uvicorn.run(app, host="127.0.0.1", port=8000)
