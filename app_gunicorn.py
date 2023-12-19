@@ -89,7 +89,7 @@ if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
 
-# CMD: gunicorn -w 4 -k uvicorn.workers.UvicornWorker your_app_module:app
+# CMD: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app_gunicorn:app
 
 # Uvicorn is a lightweight ASGI (Asynchronous Server Gateway Interface) server that specifically serves ASGI applications, such as those built with FastAPI.
 # It is responsible for handling the asynchronous aspects of the application, making it efficient for high-concurrency scenarios.

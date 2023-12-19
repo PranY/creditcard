@@ -1,8 +1,6 @@
 # app_streamlit.py
 import streamlit as st
 from joblib import load
-import numpy as np
-from pydantic import BaseModel
 
 # Load the pre-trained RandomForest model
 model_path = "models/model.joblib"
