@@ -22,7 +22,7 @@ jobs:
         run: echo "Running unit tests"
 
   build-and-push-ecr-image:
-    name: Continuous Delivery
+    name: Push to ECR
     needs: integration
     runs-on: ubuntu-latest
     steps:
