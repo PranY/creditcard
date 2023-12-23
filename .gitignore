@@ -88,3 +88,6 @@ target/
 .mypy_cache/
 /models
 /dvclive
+
+# AWS files
+.aws/*

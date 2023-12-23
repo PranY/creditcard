@@ -1,0 +1,14 @@
+# local package
+# -e .
+
+# external requirements
+fastapi
+scikit-learn
+pandas
+numpy
+joblib
+matplotlib
+uvicorn
+sagemaker
+ipykernel
+boto3
