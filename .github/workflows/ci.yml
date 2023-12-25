@@ -59,7 +59,7 @@ jobs:
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
   
   Continuous-Deployment:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build-and-push-ecr-image
     steps:
       - name: Configure AWS credentials
@@ -71,7 +71,7 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
+        uses: aws-actions/amazon-ecr-login@v1
       
       - name: Pull latest images
         env:
