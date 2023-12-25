@@ -2,3 +2,4 @@
 fastapi
 joblib
 uvicorn
+scikit-learn # This is needed by joblib to read and load the model
