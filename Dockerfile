@@ -12,14 +12,9 @@ COPY requirements.txt /app/requirements.txt
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
-# Set environment variables for AWS CLI
-# ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-# ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-# ENV AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
-
 # Copy files from S3 inside docker
-# RUN mkdir /app/models
-# RUN aws s3 cp s3://creditcard-project/models/model.joblib /app/models/model.joblib
+RUN mkdir /app/models
+RUN aws s3 cp s3://creditcard-project/models/model.joblib /app/models/model.joblib
 
 
 # Run app.py when the container launches
