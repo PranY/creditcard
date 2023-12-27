@@ -13,8 +13,8 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 # Copy files from S3 inside docker
-RUN mkdir /app/models
-RUN aws s3 cp s3://creditcard-project/models/model.joblib /app/models/model.joblib
+# RUN mkdir /app/models
+# RUN aws s3 cp s3://creditcard-project/models/model.joblib /app/models/model.joblib
 
 
 # Run app.py when the container launches
