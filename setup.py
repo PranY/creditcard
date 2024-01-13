@@ -5,6 +5,6 @@ setup(
     packages=find_packages(),
     version='0.1.0',
     description='A credit card fraud detection project',
-    author='Pranjal',
+    author='Sandeep',
     license='',
 )
