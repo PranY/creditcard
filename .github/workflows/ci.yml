@@ -1,7 +1,7 @@
 name: CI Pipeline
 
 on:
-  push:
+  commit:
 
 permissions:
   id-token: write
